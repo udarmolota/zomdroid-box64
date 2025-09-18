@@ -3,7 +3,6 @@
 #endif
 
 GO(FMOD_Studio_EventDescription_GetParameterLabelByIndex, uFpiipip)
-//GO(_ZN4FMOD6Studio13EventInstance11setCallbackEPF11FMOD_RESULTjP25FMOD_STUDIO_EVENTINSTANCEPvEj
 GO(_ZN4FMOD6Studio13EventInstance11setPropertyE26FMOD_STUDIO_EVENT_PROPERTYf, uFpLf)
 GO(_ZN4FMOD6Studio13EventInstance11setUserDataEPv, uFpp)
 GO(_ZN4FMOD6Studio13EventInstance15set3DAttributesEPK18FMOD_3D_ATTRIBUTES, uFpp)
@@ -64,3 +63,4 @@ GO(_ZNK4FMOD6Studio6System28getParameterDescriptionCountEPi, uFpp)
 GO(_ZNK4FMOD6Studio6System6getBusEPKcPPNS0_3BusE, uFppp)
 GO(_ZNK4FMOD6Studio6System6getVCAEPKcPPNS0_3VCAE, uFppp)
 GO(_ZNK4FMOD6Studio6System8getEventEPKcPPNS0_16EventDescriptionE, uFppp)
+GOM(_ZN4FMOD6Studio13EventInstance11setCallbackEPF11FMOD_RESULTjP25FMOD_STUDIO_EVENTINSTANCEPvEj, uFpu)

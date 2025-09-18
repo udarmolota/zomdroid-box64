@@ -258,6 +258,12 @@ FMOD_RESULT my__ZN4FMOD6Studio6System6createEPPS1_j(void** this, uint some_arg) 
 
     return result;
 }
+
+//This is stub, only to test b42.11
+unsigned int my__ZN4FMOD6Studio13EventInstance11setCallbackEPF11FMOD_RESULTjP25FMOD_STUDIO_EVENTINSTANCEPvEj(void* this_ptr, void* callback, unsigned int callbackmask) {
+    printf("FMOD setCallback called with mask: %u\n", callbackmask);
+    return 0;
+}
 // Insert code here
 
 #include "wrappedlib_init.h"
