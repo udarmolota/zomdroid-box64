@@ -3797,6 +3797,9 @@ wrappedfmod:
 - uFpppppppi:
   - FMOD_System_SetFileSystem
 wrappedfmodstudio:
+- uFpu:
+  - _ZN4FMOD6Studio13EventInstance11setCallbackEPF11FMOD_RESULTjP25FMOD_STUDIO_EVENTINSTANCEPvEj
+  - _ZN4FMOD6Studio6System6createEPPS1_j
 wrappedfontconfig:
 - pFpV:
   - FcObjectSetBuild

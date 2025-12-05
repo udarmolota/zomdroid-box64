@@ -11,7 +11,10 @@
 #define ADDED_FUNCTIONS() 
 #endif
 
+typedef uint32_t (*uFpu_t)(void*, uint32_t);
 
-#define SUPER() ADDED_FUNCTIONS()
+#define SUPER() ADDED_FUNCTIONS() \
+	GO(_ZN4FMOD6Studio13EventInstance11setCallbackEPF11FMOD_RESULTjP25FMOD_STUDIO_EVENTINSTANCEPvEj, uFpu_t) \
+	GO(_ZN4FMOD6Studio6System6createEPPS1_j, uFpu_t)
 
 #endif // __wrappedfmodstudioTYPES_H_
