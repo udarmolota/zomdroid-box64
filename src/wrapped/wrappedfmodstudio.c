@@ -13,9 +13,11 @@
 
 #include "generated/wrappedfmodstudiodefs.h"
 
-const char* fmodstudioName = "libfmodstudio.so.13";
+const char* fmodstudioName = "libfmodstudio.so.14";
 #define LIBNAME fmodstudio
-#define ALTNAME "libfmodstudio.so"
+#define ALTNAME "libfmodstudio.so.13"
+#define ALTNAME2 "libfmodstudio.so"
+#include "wrappedlib_init.h"
 
 #include "generated/wrappedfmodstudiotypes.h"
 
