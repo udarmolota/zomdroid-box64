@@ -13,9 +13,10 @@
 
 #include "generated/wrappedfmoddefs.h"
 
-const char* fmodName = "libfmod.so.13";
+const char* fmodName = "libfmod.so.14";
 #define LIBNAME fmod
-#define ALTNAME "libfmod.so"
+#define ALTNAME "libfmod.so.13"
+#define ALTNAME2 "libfmod.so"
 
 #include "generated/wrappedfmodtypes.h"
 

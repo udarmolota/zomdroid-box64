@@ -393,8 +393,13 @@ GO("libmpg123.so.0", mpg123)
 //GO("libtiff.so.5", libtiff)
 GO("libxml2.so.2", xml2)
 
+// FMOD
 GO("libfmod.so.13", fmod)
+GO("libfmod.so.14", fmod)
+
 GO("libfmodstudio.so.13", fmodstudio)
+GO("libfmodstudio.so.14", fmodstudio)
+
 GO("libzomdroidlinker.so", zomdroidlinker)
 
 #ifdef TERMUX
