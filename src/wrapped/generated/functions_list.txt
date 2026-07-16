@@ -3790,6 +3790,9 @@ wrappedfmod:
   - FMOD_System_CreateDSP
 - uFuupp:
   - FMOD_Debug_Initialize
+- uFppupp:
+  - FMOD_System_CreateSound
+  - FMOD_System_CreateStream
 - uFppppp:
   - FMOD_System_AttachFileSystem
 - uFpipppu:

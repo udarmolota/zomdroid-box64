@@ -296,9 +296,12 @@ GO(FMOD_System_CreateDSPByPlugin, uFpup)
 GO(FMOD_System_CreateDSPByType, uFpup)
 GO(FMOD_System_CreateGeometry, uFpiip)
 GO(FMOD_System_CreateReverb3D, uFpp)
-GO(FMOD_System_CreateSound, uFppupp)
+// CreateSound/CreateStream take a FMOD_CREATESOUNDEXINFO which may carry x86 callbacks
+// (pcmread/pcmsetpos/nonblock). Passing those straight to the native arm fmod makes it call
+// x86 code as if it were arm -> SIGILL. Intercept to bridge the callbacks. See wrappedfmod.c.
+GOM(FMOD_System_CreateSound, uFppupp)
 GO(FMOD_System_CreateSoundGroup, uFppp)
-GO(FMOD_System_CreateStream, uFppupp)
+GOM(FMOD_System_CreateStream, uFppupp)
 GO(FMOD_System_DetachChannelGroupFromPort, uFpp)
 GO(FMOD_System_Get3DListenerAttributes, uFpipppp)
 GO(FMOD_System_Get3DNumListeners, uFpp)

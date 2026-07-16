@@ -17,6 +17,7 @@ typedef uint32_t (*uFpip_t)(void*, int32_t, void*);
 typedef uint32_t (*uFppu_t)(void*, void*, uint32_t);
 typedef uint32_t (*uFppp_t)(void*, void*, void*);
 typedef uint32_t (*uFuupp_t)(uint32_t, uint32_t, void*, void*);
+typedef uint32_t (*uFppupp_t)(void*, void*, uint32_t, void*, void*);
 typedef uint32_t (*uFppppp_t)(void*, void*, void*, void*, void*);
 typedef uint32_t (*uFpipppu_t)(void*, int32_t, void*, void*, void*, uint32_t);
 typedef uint32_t (*uFpppppppi_t)(void*, void*, void*, void*, void*, void*, void*, int32_t);
@@ -30,6 +31,8 @@ typedef uint32_t (*uFpppppppi_t)(void*, void*, void*, void*, void*, void*, void*
 	GO(FMOD_System_SetCallback, uFppu_t) \
 	GO(FMOD_System_CreateDSP, uFppp_t) \
 	GO(FMOD_Debug_Initialize, uFuupp_t) \
+	GO(FMOD_System_CreateSound, uFppupp_t) \
+	GO(FMOD_System_CreateStream, uFppupp_t) \
 	GO(FMOD_System_AttachFileSystem, uFppppp_t) \
 	GO(FMOD_Memory_Initialize, uFpipppu_t) \
 	GO(FMOD_System_SetFileSystem, uFpppppppi_t)
