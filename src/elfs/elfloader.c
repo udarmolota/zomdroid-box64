@@ -1893,6 +1893,28 @@ EXPORT void PltResolver64(x64emu_t* emu)
         if(!offs && !end && local_maplib && !deepbind)
             GetGlobalSymbolStartEnd(local_maplib, symname, &offs, &end, h, version, vername, veropt, (void**)&elfsym);
     }
+    // Zomdroid loads a renamed glibc alongside Box64's wrapped libc. The bundled libgcc_s used by
+    // Build 42's x86_64 PopMan asks for the optional weak pthread_once@GLIBC_2.34 entry, while the
+    // same implementation may be visible through another glibc symbol version. A normal ELF
+    // loader is allowed to satisfy this weak optional reference with that implementation. Retry
+    // this one compatibility alias without a version constraint instead of aborting every
+    // emulated PopMan call. Both exported pthread_once versions in our glibc resolve to the same
+    // address.
+    if(!offs && bind==STB_WEAK && veropt && vername
+            && !strcmp(symname, "pthread_once") && !strcmp(vername, "GLIBC_2.34")) {
+        if(local_maplib && deepbind)
+            GetGlobalWeakSymbolStartEnd(local_maplib, symname, &offs, &end, h,
+                    -1, NULL, 0, (void**)&elfsym);
+        if(!offs && !end)
+            GetGlobalWeakSymbolStartEnd(my_context->maplib, symname, &offs, &end, h,
+                    -1, NULL, 0, (void**)&elfsym);
+        if(!offs && !end && local_maplib && !deepbind)
+            GetGlobalWeakSymbolStartEnd(local_maplib, symname, &offs, &end, h,
+                    -1, NULL, 0, (void**)&elfsym);
+        if(offs)
+            printf_log(LOG_INFO, "PltResolver: using unversioned pthread_once for optional "
+                    "pthread_once@GLIBC_2.34\n");
+    }
     if (!offs) {
         printf_log(LOG_NONE, "Error: PltResolver: Symbol %s %s(%sver %d: %s%s%s) not found, cannot apply R_X86_64_JUMP_SLOT %p (%p) in %s (local_maplib=%p, global maplib=%p, deepbind=%d)\n", (bind==STB_LOCAL)?"Local":((bind==STB_WEAK)?"Weak":""), symname, veropt?"opt":"", version, symname, vername?"@":"", vername?vername:"", p, *(void**)p, h->name, local_maplib, my_context->maplib, deepbind);
         emu->quit = 1;
