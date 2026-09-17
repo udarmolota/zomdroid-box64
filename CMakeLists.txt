@@ -397,6 +397,7 @@ set(ELFLOADER_SRC
     "${BOX64_ROOT}/src/tools/box64stack.c"
     "${BOX64_ROOT}/src/tools/bridge.c"
     "${BOX64_ROOT}/src/tools/callback.c"
+    "${BOX64_ROOT}/src/tools/zomdroid_jni_stats.c"
     "${BOX64_ROOT}/src/tools/gdbjit.c"
     "${BOX64_ROOT}/src/tools/my_cpuid.c"
     "${BOX64_ROOT}/src/tools/fileutils.c"

@@ -12,6 +12,7 @@
 #include "box64context.h"
 #include "box64stack.h"
 #include "dynarec.h"
+#include "zomdroid_jni_stats.h"
 #ifdef BOX32
 #include "box32.h"
 #endif
@@ -230,7 +231,11 @@ uint64_t RunFunctionFmt(uintptr_t fnc, const char* fmt, ...)
     }
 
     uintptr_t oldip = R_RIP;
+    // Zomdroid: per-function call count and time of every emulated JNI call, when enabled.
+    // Register reads only - nothing here may disturb what DynaCall leaves in the registers.
+    uint64_t zjs_t0 = zomdroid_jni_stats_on ? zomdroid_jni_stats_now() : 0;
     DynaCall(emu, fnc);
+    if (zomdroid_jni_stats_on) zomdroid_jni_stats_record(fnc, zomdroid_jni_stats_now() - zjs_t0);
 
     if(oldip==R_RIP) {
         #ifdef BOX32
